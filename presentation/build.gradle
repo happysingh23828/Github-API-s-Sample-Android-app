@@ -1,0 +1,50 @@
+import dependencies.Dependencies
+import dependencies.Version
+
+apply plugin: Dependencies.Plugins.ANDROID_LIBRARY
+apply plugin: Dependencies.Plugins.KOTLIN_ANDROID
+apply plugin: Dependencies.Plugins.KOTLIN_ANDROID_EXTENSIONS
+
+android {
+    compileSdkVersion Version.compileSdk
+    defaultConfig {
+        minSdkVersion Version.minSdk
+        targetSdkVersion Version.targetSdk
+        versionCode Version.versionCode
+        versionName Version.versionName
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        consumerProguardFiles 'consumer-rules.pro'
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+
+
+    dependencies {
+        implementation fileTree(dir: 'libs', include: ['*.jar'])
+        implementation Dependencies.Kotlin.kotlin_stdlib_jdk7
+
+        //Testing
+        testImplementation Dependencies.Test.test_junit
+        androidTestImplementation Dependencies.Test.android_test_espresso_core
+        androidTestImplementation Dependencies.Test.android_test_rules
+        androidTestImplementation Dependencies.Test.android_test_runner
+        testImplementation Dependencies.Test.roboElectric
+
+        //LifeCycle
+        implementation Dependencies.Lifecycle.lifeCycleExtension
+
+        //RxJava
+        implementation Dependencies.RxJava.rxAndroid
+        implementation Dependencies.RxJava.rxjava2
+        implementation Dependencies.RxJava.rxBinding
+
+        //JavaX
+        implementation Dependencies.javax
+    }
+
+}

@@ -1,2 +1,5 @@
-include ':app'
 rootProject.name = "Github Sample App"
+include ':presentation'
+include ':domain'
+include ':data'
+include ':app'
