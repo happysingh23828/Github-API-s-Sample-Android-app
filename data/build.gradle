@@ -1,0 +1,26 @@
+import dependencies.Dependencies
+apply plugin: Dependencies.Plugins.JAVA_LIBRARY
+apply plugin: Dependencies.Plugins.KOTLIN
+
+dependencies {
+
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation Dependencies.Kotlin.kotlin_stdlib_jdk7
+
+    //Modules
+    implementation project(Dependencies.Module.domain)
+
+    //Unit Testing
+    testImplementation Dependencies.Test.mockito
+    testImplementation Dependencies.Test.test_junit
+
+    //RxJava
+    implementation Dependencies.RxJava.rxAndroid
+    implementation Dependencies.RxJava.rxjava2
+
+    //JavaX
+    implementation Dependencies.javax
+}
+
+sourceCompatibility = JavaVersion.VERSION_1_8
+targetCompatibility = JavaVersion.VERSION_1_8
