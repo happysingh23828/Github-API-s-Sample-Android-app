@@ -9,11 +9,11 @@ class SingleRepoEntityMapper @Inject constructor() : EntityMapper<GithubSingleRe
 
     override fun mapFromModel(model: GithubSingleRepo): SingleRepoEntity {
         return SingleRepoEntity(
-            repoName = model.name,
-            repoDescription = model.description,
-            openIssuesCount = model.openIssuesCount,
-            forksCount = model.forksCount,
-            defaultBranch = model.defaultBranch
+            repoName = model.name?:"",
+            repoDescription = model.description?:"",
+            openIssuesCount = model.openIssuesCount?:0,
+            forksCount = model.forksCount?:0,
+            defaultBranch = model.defaultBranch?:""
         )
     }
 }

@@ -9,8 +9,8 @@ class UserEntityMapper @Inject constructor() : EntityMapper<GithubUser, UserEnti
 
     override fun mapFromModel(model: GithubUser): UserEntity {
         return UserEntity(
-            userName = model.login,
-            profilePic = model.avatarUrl
+            userName = model.login?:"",
+            profilePic = model.avatarUrl?:""
         )
     }
 }

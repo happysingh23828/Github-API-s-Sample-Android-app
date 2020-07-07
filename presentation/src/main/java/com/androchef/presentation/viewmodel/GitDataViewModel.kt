@@ -23,6 +23,10 @@ class GitDataViewModel constructor(
             publishState(value)
         }
 
+    fun init() {
+        state = GitDataState.Init
+    }
+
     fun getUserAllRepositories(userName: String) {
         state = GitDataState.Loading("fetching $userName's repositories")
         getUserRepositoryListUseCase
@@ -36,7 +40,7 @@ class GitDataViewModel constructor(
                 override fun onError(e: Throwable) {
                     state = GitDataState.Error(e.localizedMessage)
                 }
-            })
+            }, GetUserRepositoryListUseCase.Params(userName))
     }
 
     fun getPullRequestsForRepos(userName: String, repoName: String, prState: PullRequest.State) {
@@ -51,7 +55,7 @@ class GitDataViewModel constructor(
             override fun onError(e: Throwable) {
                 state = GitDataState.Error(e.localizedMessage)
             }
-        })
+        }, GetPullRequestListUseCase.Params(userName, repoName, prState))
     }
 
 

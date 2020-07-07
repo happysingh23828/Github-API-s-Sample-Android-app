@@ -3,6 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.androchef.githubsampleapp">
 
+    <uses-permission android:name="android.permission.INTERNET"/>
     <application
         android:name=".MainApplication"
         android:allowBackup="true"

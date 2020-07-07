@@ -4,6 +4,7 @@ import android.content.Context
 import android.content.Intent
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
 import com.androchef.domain.GitRepository
@@ -13,10 +14,14 @@ import com.androchef.githubsampleapp.MainApplication
 import com.androchef.githubsampleapp.R
 import com.androchef.githubsampleapp.extensions.addFragment
 import com.androchef.githubsampleapp.extensions.createFactory
+import com.androchef.githubsampleapp.extensions.gone
+import com.androchef.githubsampleapp.extensions.visible
 import com.androchef.githubsampleapp.ui.landing.LandingFragment
+import com.androchef.presentation.viewmodel.GitDataState
 import com.androchef.presentation.viewmodel.GitDataViewModel
 import com.androchef.presentation.views.mappers.git_repos.SingleGitRepoViewMapper
 import com.androchef.presentation.views.mappers.pull_requets.PullRequestViewMapper
+import kotlinx.android.synthetic.main.activity_dashboard.*
 import javax.inject.Inject
 
 class DashboardActivity : AppCompatActivity() {
@@ -42,12 +47,12 @@ class DashboardActivity : AppCompatActivity() {
 
     private lateinit var gitDataViewModel: GitDataViewModel
 
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_dashboard)
         init()
         loadLandingFragment()
+        setObservers()
     }
 
     private fun init() {
@@ -61,6 +66,29 @@ class DashboardActivity : AppCompatActivity() {
         gitDataViewModel = ViewModelProviders.of(this, factory).get(
             GitDataViewModel::class.java
         )
+    }
+
+    private fun setObservers() {
+        gitDataViewModel.stateObservable.observe(this, Observer {
+            updateState(it)
+        })
+    }
+
+    private fun updateState(state: GitDataState) {
+        when (state) {
+            is GitDataState.Loading -> showLoading()
+            else -> hideLoading()
+        }
+    }
+
+    private fun showLoading() {
+        loadingProgressbar.visible()
+        mainFragmentContainer.gone()
+    }
+
+    private fun hideLoading() {
+        loadingProgressbar.gone()
+        mainFragmentContainer.visible()
     }
 
     private fun loadLandingFragment() {
