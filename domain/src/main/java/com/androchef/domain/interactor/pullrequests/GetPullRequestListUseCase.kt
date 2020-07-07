@@ -21,7 +21,7 @@ class GetPullRequestListUseCase constructor(
         return gitRepository.getPullRequestList(
             requestBody.username,
             requestBody.repositoryName,
-            getPullRequestState(requestBody.state)
+            requestBody.state
         )
     }
 
@@ -33,14 +33,6 @@ class GetPullRequestListUseCase constructor(
     data class Params(
         val username: String,
         val repositoryName: String,
-        val state: String
+        val state: PullRequest.State
     )
-
-    private fun getPullRequestState(state: String): PullRequest.State {
-        return when (state) {
-            "open" -> PullRequest.State.OPEN
-            "closed" -> PullRequest.State.CLOSED
-            else -> PullRequest.State.ALL
-        }
-    }
 }

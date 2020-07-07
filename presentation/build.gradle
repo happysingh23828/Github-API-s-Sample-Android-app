@@ -28,6 +28,9 @@ android {
         implementation fileTree(dir: 'libs', include: ['*.jar'])
         implementation Dependencies.Kotlin.kotlin_stdlib_jdk7
 
+        //Modules
+        implementation project(Dependencies.Module.domain)
+
         //Testing
         testImplementation Dependencies.Test.test_junit
         androidTestImplementation Dependencies.Test.android_test_espresso_core
