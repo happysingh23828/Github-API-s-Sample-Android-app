@@ -24,6 +24,7 @@ object Version {
     const val javaxInject = "1"
     const val javaxAnnotation = "1.0"
     const val jacoco = "0.16.0"
+    const val jodaTime = "2.10.6"
     const val parcelerVersion = "1.1.12"
     const val picasso = "2.71828"
     const val gradleVersion = "3.5.0"

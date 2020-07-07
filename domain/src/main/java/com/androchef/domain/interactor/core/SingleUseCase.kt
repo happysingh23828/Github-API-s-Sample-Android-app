@@ -13,21 +13,24 @@ abstract class SingleUseCase<Params, Result> constructor(
     private val threadExecutor: ThreadExecutor,
     private val postExecutionThread: PostExecutionThread
 ) {
-    private var requestValues: Params? = null
 
     protected abstract fun buildUseCaseObservable(requestValues: Params? = null): Single<Result>
 
     /**
      * Executes the current use case.
      */
-    open fun execute(singleObserver: DisposableSingleObserver<Result>) {
+    open fun execute(singleObserver: DisposableSingleObserver<Result>, requestValues: Params?) {
         val single = this.buildUseCaseObservable(requestValues).subscribeOn(
             Schedulers.from(threadExecutor)
         ).observeOn(postExecutionThread.scheduler) as Single<Result>
         addDisposable(single.subscribeWith(singleObserver))
     }
 
-    open fun execute(singleObserver: DisposableSingleObserver<Result>, scheduler: Scheduler) {
+    open fun execute(
+        singleObserver: DisposableSingleObserver<Result>,
+        scheduler: Scheduler,
+        requestValues: Params? = null
+    ) {
         val single = this.buildUseCaseObservable(requestValues).subscribeOn(
             Schedulers.from(threadExecutor)
         ).observeOn(scheduler) as Single<Result>

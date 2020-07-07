@@ -5,6 +5,7 @@ import com.androchef.githubsampleapp.di.modules.ApplicationModule
 import com.androchef.githubsampleapp.di.modules.DomainModule
 import com.androchef.githubsampleapp.di.modules.RemoteModule
 import com.androchef.githubsampleapp.di.modules.UIModule
+import com.androchef.githubsampleapp.ui.DashboardActivity
 import dagger.BindsInstance
 import dagger.Component
 import javax.inject.Singleton
@@ -18,6 +19,7 @@ import javax.inject.Singleton
         UIModule::class]
 )
 interface AppComponent {
+
     @Component.Builder
     interface Builder {
         @BindsInstance
@@ -25,5 +27,7 @@ interface AppComponent {
 
         fun build(): AppComponent
     }
-    
+
+    fun inject(dashboardActivity: DashboardActivity)
+
 }

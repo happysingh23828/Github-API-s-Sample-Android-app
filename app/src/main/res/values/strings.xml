@@ -1,3 +1,14 @@
 <resources>
     <string name="app_name">Github Sample App</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="enter_your_github_username">Enter your github username.</string>
+    <string name="next">Next</string>
+    <string name="continue_msg">Continue</string>
+    <string name="info_valid_username">please enter valid username.</string>
+    <string name="info_no_repositories">No Repositories for this user.</string>
+    <string name="info_no_pr_found">No Pull requests find for this repositories.</string>
+    <string name="lable_by">by</string>
+    <string name="my_github_username">happysingh23828</string>
+
 </resources>

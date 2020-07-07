@@ -48,6 +48,7 @@ android {
 
         //JavaX
         implementation Dependencies.javax
+        implementation Dependencies.jodaTime
     }
 
 }

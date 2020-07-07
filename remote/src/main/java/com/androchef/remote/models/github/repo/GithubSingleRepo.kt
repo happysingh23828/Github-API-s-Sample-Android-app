@@ -6,215 +6,212 @@ import com.google.gson.annotations.SerializedName
 data class GithubSingleRepo(
 
     @SerializedName("archive_url")
-    var archiveUrl: String = "",
+    var archiveUrl: String? = "",
 
     @SerializedName("archived")
-    var archived: Boolean = false,
+    var archived: Boolean ?= false,
 
     @SerializedName("assignees_url")
-    var assigneesUrl: String = "",
+    var assigneesUrl: String? = "",
 
     @SerializedName("blobs_url")
-    var blobsUrl: String = "",
+    var blobsUrl: String? = "",
 
     @SerializedName("branches_url")
-    var branchesUrl: String = "",
+    var branchesUrl: String? = "",
 
     @SerializedName("clone_url")
-    var cloneUrl: String = "",
+    var cloneUrl: String? = "",
 
     @SerializedName("collaborators_url")
-    var collaboratorsUrl: String = "",
+    var collaboratorsUrl: String? = "",
 
     @SerializedName("comments_url")
-    var commentsUrl: String = "",
+    var commentsUrl: String? = "",
 
     @SerializedName("commits_url")
-    var commitsUrl: String = "",
+    var commitsUrl: String? = "",
 
     @SerializedName("compare_url")
-    var compareUrl: String = "",
+    var compareUrl: String? = "",
 
     @SerializedName("contents_url")
-    var contentsUrl: String = "",
+    var contentsUrl: String? = "",
 
     @SerializedName("contributors_url")
-    var contributorsUrl: String = "",
+    var contributorsUrl: String? = "",
 
     @SerializedName("created_at")
-    var createdAt: String = "",
+    var createdAt: String? = "",
 
     @SerializedName("default_branch")
-    var defaultBranch: String = "",
+    var defaultBranch: String? = "",
 
     @SerializedName("deployments_url")
-    var deploymentsUrl: String = "",
+    var deploymentsUrl: String? = "",
 
     @SerializedName("description")
-    var description: String = "",
+    var description: String? = "",
 
     @SerializedName("disabled")
-    var disabled: Boolean = false,
+    var disabled: Boolean? = false,
 
     @SerializedName("downloads_url")
-    var downloadsUrl: String = "",
+    var downloadsUrl: String? = "",
 
     @SerializedName("events_url")
-    var eventsUrl: String = "",
+    var eventsUrl: String? = "",
 
     @SerializedName("fork")
-    var fork: Boolean = false,
+    var fork: Boolean? = false,
 
     @SerializedName("forks")
-    var forks: Int = 0,
+    var forks: Int? = 0,
 
     @SerializedName("forks_count")
-    var forksCount: Int = 0,
+    var forksCount: Int? = 0,
 
     @SerializedName("forks_url")
-    var forksUrl: String = "",
+    var forksUrl: String? = "",
 
     @SerializedName("full_name")
-    var fullName: String = "",
+    var fullName: String? = "",
 
     @SerializedName("git_commits_url")
-    var gitCommitsUrl: String = "",
+    var gitCommitsUrl: String? = "",
 
     @SerializedName("git_refs_url")
-    var gitRefsUrl: String = "",
+    var gitRefsUrl: String? = "",
 
     @SerializedName("git_tags_url")
-    var gitTagsUrl: String = "",
+    var gitTagsUrl: String? = "",
 
     @SerializedName("git_url")
-    var gitUrl: String = "",
+    var gitUrl: String? = "",
 
     @SerializedName("has_downloads")
-    var hasDownloads: Boolean = false,
+    var hasDownloads: Boolean? = false,
 
     @SerializedName("has_issues")
-    var hasIssues: Boolean = false,
+    var hasIssues: Boolean ?= false,
 
     @SerializedName("has_pages")
-    var hasPages: Boolean = false,
+    var hasPages: Boolean ?= false,
 
     @SerializedName("has_projects")
-    var hasProjects: Boolean = false,
+    var hasProjects: Boolean ?= false,
 
     @SerializedName("has_wiki")
-    var hasWiki: Boolean = false,
+    var hasWiki: Boolean ?= false,
 
     @SerializedName("homepage")
-    var homepage: String = "",
+    var homepage: String? = "",
 
     @SerializedName("hooks_url")
-    var hooksUrl: String = "",
+    var hooksUrl: String? = "",
 
     @SerializedName("html_url")
-    var htmlUrl: String = "",
+    var htmlUrl: String? = "",
 
     @SerializedName("id")
-    var id: Int = 0,
+    var id: Int? = 0,
 
     @SerializedName("issue_comment_url")
-    var issueCommentUrl: String = "",
+    var issueCommentUrl: String? = "",
 
     @SerializedName("issue_events_url")
-    var issueEventsUrl: String = "",
+    var issueEventsUrl: String? = "",
 
     @SerializedName("issues_url")
-    var issuesUrl: String = "",
+    var issuesUrl: String? = "",
 
     @SerializedName("keys_url")
-    var keysUrl: String = "",
+    var keysUrl: String? = "",
 
     @SerializedName("labels_url")
-    var labelsUrl: String = "",
+    var labelsUrl: String? = "",
 
     @SerializedName("language")
-    var language: String = "",
+    var language: String? = "",
 
     @SerializedName("languages_url")
-    var languagesUrl: String = "",
+    var languagesUrl: String? = "",
 
     @SerializedName("merges_url")
-    var mergesUrl: String = "",
+    var mergesUrl: String? = "",
 
     @SerializedName("milestones_url")
-    var milestonesUrl: String = "",
-
-    @SerializedName("mirror_url")
-    var mirrorUrl: Any = Any(),
+    var milestonesUrl: String? = "",
 
     @SerializedName("name")
-    var name: String = "",
+    var name: String? = "",
 
     @SerializedName("node_id")
-    var nodeId: String = "",
+    var nodeId: String? = "",
 
     @SerializedName("notifications_url")
-    var notificationsUrl: String = "",
+    var notificationsUrl: String? = "",
 
     @SerializedName("open_issues")
-    var openIssues: Int = 0,
+    var openIssues: Int? = 0,
 
     @SerializedName("open_issues_count")
-    var openIssuesCount: Int = 0,
+    var openIssuesCount: Int? = 0,
 
     @SerializedName("private")
-    var `private`: Boolean = false,
+    var `private`: Boolean ?= false,
 
     @SerializedName("pulls_url")
-    var pullsUrl: String = "",
+    var pullsUrl: String? = "",
 
     @SerializedName("pushed_at")
-    var pushedAt: String = "",
+    var pushedAt: String? = "",
 
     @SerializedName("releases_url")
-    var releasesUrl: String = "",
+    var releasesUrl: String? = "",
 
     @SerializedName("size")
-    var size: Int = 0,
+    var size: Int? = 0,
 
     @SerializedName("ssh_url")
-    var sshUrl: String = "",
+    var sshUrl: String? = "",
 
     @SerializedName("stargazers_count")
-    var stargazersCount: Int = 0,
+    var stargazersCount: Int? = 0,
 
     @SerializedName("stargazers_url")
-    var stargazersUrl: String = "",
+    var stargazersUrl: String? = "",
 
     @SerializedName("statuses_url")
-    var statusesUrl: String = "",
+    var statusesUrl: String? = "",
 
     @SerializedName("subscribers_url")
-    var subscribersUrl: String = "",
+    var subscribersUrl: String? = "",
 
     @SerializedName("subscription_url")
-    var subscriptionUrl: String = "",
+    var subscriptionUrl: String? = "",
 
     @SerializedName("svn_url")
-    var svnUrl: String = "",
+    var svnUrl: String? = "",
 
     @SerializedName("tags_url")
-    var tagsUrl: String = "",
+    var tagsUrl: String? = "",
 
     @SerializedName("teams_url")
-    var teamsUrl: String = "",
+    var teamsUrl: String? = "",
 
     @SerializedName("trees_url")
-    var treesUrl: String = "",
+    var treesUrl: String? = "",
 
     @SerializedName("updated_at")
-    var updatedAt: String = "",
+    var updatedAt: String? = "",
 
     @SerializedName("url")
-    var url: String = "",
+    var url: String? = "",
 
     @SerializedName("watchers")
-    var watchers: Int = 0,
+    var watchers: Int? = 0,
 
     @SerializedName("watchers_count")
-    var watchersCount: Int = 0
+    var watchersCount: Int? = 0
 )

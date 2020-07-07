@@ -39,6 +39,7 @@ object GitServiceFactory {
         return OkHttpClient.Builder()
             .addInterceptor(logging)
             .dns(Dns.SYSTEM)
+            .cache(null)
             .connectTimeout(OK_HTTP_TIMEOUT, TimeUnit.SECONDS)
             .readTimeout(OK_HTTP_TIMEOUT, TimeUnit.SECONDS)
             .build()

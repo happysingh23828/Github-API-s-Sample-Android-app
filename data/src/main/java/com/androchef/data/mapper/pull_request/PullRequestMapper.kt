@@ -12,6 +12,7 @@ class PullRequestMapper @Inject constructor() : Mapper<PullRequestEntity, PullRe
     override fun mapFromEntity(type: PullRequestEntity): PullRequest {
         return PullRequest(
             id = type.id,
+            desc = type.desc,
             closedAt = type.closedAt,
             createdAt = type.createdAt,
             title = type.title,
@@ -22,6 +23,7 @@ class PullRequestMapper @Inject constructor() : Mapper<PullRequestEntity, PullRe
     override fun mapToEntity(type: PullRequest): PullRequestEntity {
         return PullRequestEntity(
             id = type.id,
+            desc = type.desc,
             closedAt = type.closedAt,
             createdAt = type.createdAt,
             title = type.title,

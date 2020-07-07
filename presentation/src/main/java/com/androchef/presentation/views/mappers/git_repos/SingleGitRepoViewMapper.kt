@@ -10,6 +10,7 @@ class SingleGitRepoViewMapper @Inject constructor() : Mapper<SingleRepoView, Git
     override fun mapToView(type: GitSingleRepo): SingleRepoView {
         return SingleRepoView(
             repoName = type.repoName,
+            repoDescription = type.repoDescription,
             forksCount = type.forksCount
         )
     }
