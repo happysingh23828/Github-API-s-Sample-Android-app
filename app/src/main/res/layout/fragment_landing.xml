@@ -38,6 +38,7 @@
         android:imeOptions="actionDone"
         android:inputType="text"
         android:lines="1"
+        android:text="@string/my_github_username"
         android:padding="12dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"

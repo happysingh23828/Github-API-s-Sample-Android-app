@@ -9,6 +9,11 @@ import com.androchef.presentation.base.BaseViewModel
 import com.androchef.presentation.views.mappers.git_repos.SingleGitRepoViewMapper
 import com.androchef.presentation.views.mappers.pull_requets.PullRequestViewMapper
 import io.reactivex.observers.DisposableSingleObserver
+import java.io.InterruptedIOException
+import java.net.ConnectException
+import java.net.SocketTimeoutException
+import java.net.UnknownHostException
+import javax.net.ssl.SSLHandshakeException
 
 class GitDataViewModel constructor(
     private val pullRequestViewMapper: PullRequestViewMapper,
@@ -38,7 +43,7 @@ class GitDataViewModel constructor(
                 }
 
                 override fun onError(e: Throwable) {
-                    state = GitDataState.Error(e.localizedMessage)
+                    state = GitDataState.Error(e.transform().localizedMessage)
                 }
             }, GetUserRepositoryListUseCase.Params(userName))
     }
@@ -53,7 +58,7 @@ class GitDataViewModel constructor(
             }
 
             override fun onError(e: Throwable) {
-                state = GitDataState.Error(e.localizedMessage)
+                state = GitDataState.Error(e.transform().localizedMessage)
             }
         }, GetPullRequestListUseCase.Params(userName, repoName, prState))
     }
@@ -61,5 +66,18 @@ class GitDataViewModel constructor(
 
     override val stateObservable: MutableLiveData<GitDataState> by lazy {
         MutableLiveData<GitDataState>()
+    }
+}
+
+fun Throwable.transform(): Exception {
+    return when (this) {
+        is UnknownHostException,
+        is InterruptedIOException,
+        is ConnectException -> Exception("You 're currently offline. Please check your network connection and try again.")
+
+        is SSLHandshakeException,
+        is SocketTimeoutException -> Exception("We are unable to connect to our servers. Please check your connection and try again.")
+
+        else -> Exception("Something went wrong please try again.")
     }
 }
