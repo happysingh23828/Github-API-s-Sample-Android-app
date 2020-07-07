@@ -28,10 +28,6 @@ class GitDataViewModel constructor(
             publishState(value)
         }
 
-    fun init() {
-        state = GitDataState.Init
-    }
-
     fun getUserAllRepositories(userName: String) {
         state = GitDataState.Loading("Fetching $userName's repositories")
         getUserRepositoryListUseCase
@@ -63,6 +59,9 @@ class GitDataViewModel constructor(
         }, GetPullRequestListUseCase.Params(userName, repoName, prState))
     }
 
+    fun resetState() {
+        state = GitDataState.Init
+    }
 
     override val stateObservable: MutableLiveData<GitDataState> by lazy {
         MutableLiveData<GitDataState>()
@@ -74,10 +73,8 @@ fun Throwable.transform(): Exception {
         is UnknownHostException,
         is InterruptedIOException,
         is ConnectException -> Exception("You 're currently offline. Please check your network connection and try again.")
-
         is SSLHandshakeException,
         is SocketTimeoutException -> Exception("We are unable to connect to our servers. Please check your connection and try again.")
-
         else -> Exception("Something went wrong please try again.")
     }
 }

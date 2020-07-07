@@ -88,6 +88,7 @@ class UserRepositoriesFragment : Fragment(), UserRepositoriesAdaptor.OnItemCLick
     }
 
     private fun popUpFragment(message: String) {
+        gitDataViewModel.resetState()
         toast(message)
         fragmentManager?.popBackStack()
     }
