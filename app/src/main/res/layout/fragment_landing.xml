@@ -55,6 +55,7 @@
         android:background="@drawable/bg_button_shape"
         android:padding="0dp"
         android:text="@string/continue_msg"
+        android:alpha="0.7"
         android:textColor="@android:color/white"
         app:layout_constraintEnd_toEndOf="@+id/edtUserName"
         app:layout_constraintStart_toStartOf="@+id/edtUserName"
