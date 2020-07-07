@@ -10,8 +10,7 @@ class MainApplication : Application() {
         instance = this
     }
 
-    var appComponent: AppComponent =
-        DaggerAppComponent.builder().application(this).build()
+    var appComponent: AppComponent = DaggerAppComponent.builder().application(this).build()
 
     override fun onCreate() {
         super.onCreate()
