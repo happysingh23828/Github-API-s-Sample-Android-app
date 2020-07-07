@@ -1,22 +1,30 @@
 import dependencies.Dependencies
+
 apply plugin: Dependencies.Plugins.JAVA_LIBRARY
 apply plugin: Dependencies.Plugins.KOTLIN
 
 dependencies {
-
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation Dependencies.Kotlin.kotlin_stdlib_jdk7
 
     //Modules
-    implementation project(Dependencies.Module.domain)
+    implementation project(Dependencies.Module.data)
 
     //Unit Testing
     testImplementation Dependencies.Test.mockito
     testImplementation Dependencies.Test.test_junit
 
+    //Retrofit
+    implementation Dependencies.OkHttp3.loggingInterceptor
+    implementation Dependencies.Retrofit2.adapterRxjava2
+    implementation Dependencies.Retrofit2.converterGson
+    implementation Dependencies.Retrofit2.retrofit
+    implementation Dependencies.Facebook.stethoNetwork
+
     //RxJava
     implementation Dependencies.RxJava.rxAndroid
     implementation Dependencies.RxJava.rxjava2
+    implementation Dependencies.RxJava.rxrelay2
 
     //JavaX
     implementation Dependencies.javax
