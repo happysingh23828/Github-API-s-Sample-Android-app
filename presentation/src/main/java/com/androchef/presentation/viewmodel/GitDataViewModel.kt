@@ -28,7 +28,7 @@ class GitDataViewModel constructor(
     }
 
     fun getUserAllRepositories(userName: String) {
-        state = GitDataState.Loading("fetching $userName's repositories")
+        state = GitDataState.Loading("Fetching $userName's repositories")
         getUserRepositoryListUseCase
             .execute(object : DisposableSingleObserver<List<GitSingleRepo>>() {
                 override fun onSuccess(t: List<GitSingleRepo>) {
@@ -44,7 +44,7 @@ class GitDataViewModel constructor(
     }
 
     fun getPullRequestsForRepos(userName: String, repoName: String, prState: PullRequest.State) {
-        state = GitDataState.Loading("fetching $repoName's pull requests")
+        state = GitDataState.Loading("Fetching $repoName's pull requests")
         getPullRequestListUseCase.execute(object : DisposableSingleObserver<List<PullRequest>>() {
             override fun onSuccess(t: List<PullRequest>) {
                 state = GitDataState.GetPullRequestsSuccess(t.map {

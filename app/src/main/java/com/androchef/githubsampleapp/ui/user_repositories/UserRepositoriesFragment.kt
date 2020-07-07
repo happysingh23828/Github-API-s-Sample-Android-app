@@ -63,15 +63,23 @@ class UserRepositoriesFragment : Fragment() {
         when (state) {
             is GitDataState.GetUsersRepositoriesSuccess -> showRepoList(state.lisOfRepos)
             is GitDataState.Error -> {
-                toast(state.message)
-                fragmentManager?.popBackStack()
+                popUpFragment(state.message)
             }
         }
     }
 
     private fun showRepoList(lisOfRepos: List<SingleRepoView>) {
-        mView.userRepoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-        mView.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(lisOfRepos)
+        if (lisOfRepos.isNotEmpty()) {
+            mView.userRepoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+            mView.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(lisOfRepos)
+        } else {
+            popUpFragment(getString(R.string.inof_no_repositories))
+        }
+    }
+
+    private fun popUpFragment(message: String) {
+        toast(message)
+        fragmentManager?.popBackStack()
     }
 
     companion object {

@@ -6,4 +6,5 @@
     <string name="next">Next</string>
     <string name="continue_msg">Continue</string>
     <string name="info_valid_username">please enter valid username.</string>
+    <string name="inof_no_repositories">No Repositories for this user.</string>
 </resources>

@@ -76,17 +76,20 @@ class DashboardActivity : AppCompatActivity() {
 
     private fun updateState(state: GitDataState) {
         when (state) {
-            is GitDataState.Loading -> showLoading()
+            is GitDataState.Loading -> showLoading(state.message)
             else -> hideLoading()
         }
     }
 
-    private fun showLoading() {
+    private fun showLoading(message : String) {
+        tvLoadingMessage.text = message
+        tvLoadingMessage.visible()
         loadingProgressbar.visible()
         mainFragmentContainer.gone()
     }
 
     private fun hideLoading() {
+        tvLoadingMessage.gone()
         loadingProgressbar.gone()
         mainFragmentContainer.visible()
     }
