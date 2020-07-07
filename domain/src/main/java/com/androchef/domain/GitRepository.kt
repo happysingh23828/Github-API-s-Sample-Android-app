@@ -9,7 +9,8 @@ interface GitRepository {
     fun getUserGitRepositories(username: String): Single<List<GitSingleRepo>>
 
     fun getPullRequestList(
-        prId: Int,
+        username: String,
+        repoName: String,
         state: PullRequest.State = PullRequest.State.ALL
     ): Single<List<PullRequest>>
 }
