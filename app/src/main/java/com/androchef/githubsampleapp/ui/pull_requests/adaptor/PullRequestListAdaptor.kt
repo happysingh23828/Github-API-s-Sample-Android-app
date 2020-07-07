@@ -33,11 +33,16 @@ class PullRequestListAdaptor(private val listOfPrs: List<PullRequestView>) :
 
         fun bind(pullRequestView: PullRequestView) {
             mView.tvPrTitle.text = pullRequestView.prTitle
-            mView.tvPrDesc.text = pullRequestView.prDesc
+
             pullRequestView.user.profilePic.let {
                 if (it.isValid())
                     Picasso.get().load(it).into(mView.ivUserProfile)
             }
+
+            mView.tvUserName.text =
+                mView.context.getString(R.string.lable_by).plus(" ")
+                    .plus(pullRequestView.user.userName)
+
             mView.tvCreatedAt.text = pullRequestView.createdAt
             mView.tvClosedAt.text = pullRequestView.closedAt
         }

@@ -8,4 +8,5 @@
     <string name="info_valid_username">please enter valid username.</string>
     <string name="info_no_repositories">No Repositories for this user.</string>
     <string name="info_no_pr_found">No Pull requests find for this repositories.</string>
+    <string name="lable_by">by</string>
 </resources>

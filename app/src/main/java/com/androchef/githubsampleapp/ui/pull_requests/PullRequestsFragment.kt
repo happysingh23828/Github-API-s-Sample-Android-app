@@ -51,7 +51,8 @@ class PullRequestsFragment : Fragment() {
     }
 
     private fun fetchPullRequests() {
-        gitDataViewModel.getPullRequestsForRepos(userName,repoName,PullRequest.State.ALL)
+        //Config for all states [open, closed, all].
+        gitDataViewModel.getPullRequestsForRepos(userName, repoName, PullRequest.State.CLOSED)
     }
 
     private fun setObservers() {
