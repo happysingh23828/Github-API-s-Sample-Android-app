@@ -3,8 +3,9 @@ package com.androchef.presentation.views.mappers.git_repos
 import com.androchef.domain.models.repo.GitSingleRepo
 import com.androchef.presentation.mapper.Mapper
 import com.androchef.presentation.views.views.SingleRepoView
+import javax.inject.Inject
 
-class SingleGitRepoViewMapper : Mapper<SingleRepoView, GitSingleRepo> {
+class SingleGitRepoViewMapper @Inject constructor() : Mapper<SingleRepoView, GitSingleRepo> {
 
     override fun mapToView(type: GitSingleRepo): SingleRepoView {
         return SingleRepoView(

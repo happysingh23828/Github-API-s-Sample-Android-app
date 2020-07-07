@@ -6,8 +6,9 @@ import com.androchef.domain.executor.ThreadExecutor
 import com.androchef.domain.interactor.core.SingleUseCase
 import com.androchef.domain.models.pullrequest.PullRequest
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetPullRequestListUseCase constructor(
+class GetPullRequestListUseCase @Inject constructor(
     private val gitRepository: GitRepository,
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread

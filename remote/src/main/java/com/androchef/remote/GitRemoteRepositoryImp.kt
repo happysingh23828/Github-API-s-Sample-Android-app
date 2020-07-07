@@ -8,8 +8,9 @@ import com.androchef.remote.mappers.github.pull_request.PullRequestEntityMapper
 import com.androchef.remote.mappers.github.repos.SingleRepoEntityMapper
 import com.androchef.remote.services.github.GithubService
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GitRemoteRepositoryImp constructor(
+class GitRemoteRepositoryImp @Inject constructor(
     private val githubService: GithubService,
     private val pullRequestEntityMapper: PullRequestEntityMapper,
     private val singleRepoEntityMapper: SingleRepoEntityMapper

@@ -5,8 +5,9 @@ import com.androchef.data.models.PullRequestEntity
 import com.androchef.data.models.UserEntity
 import com.androchef.domain.models.pullrequest.PullRequest
 import com.androchef.domain.models.user.User
+import javax.inject.Inject
 
-class PullRequestMapper : Mapper<PullRequestEntity, PullRequest> {
+class PullRequestMapper @Inject constructor() : Mapper<PullRequestEntity, PullRequest> {
 
     override fun mapFromEntity(type: PullRequestEntity): PullRequest {
         return PullRequest(
