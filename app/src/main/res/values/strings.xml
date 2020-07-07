@@ -10,5 +10,7 @@
     <string name="info_no_pr_found">No Pull requests find for this repositories.</string>
     <string name="lable_by">by</string>
     <string name="my_github_username">happysingh23828</string>
+    <string name="info_pull_requests">Pull Requests</string>
+    <string name="repositories">Repositories</string>
 
 </resources>

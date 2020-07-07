@@ -7,13 +7,36 @@
     android:background="@android:color/white"
     tools:context=".ui.pull_requests.PullRequestsFragment">
 
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:translationZ="3dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            style="@style/TextAppearance.AppCompat.Headline"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="start"
+            android:padding="10dp"
+            android:paddingStart="20dp"
+            android:paddingLeft="20dp"
+            android:text="@string/info_pull_requests"
+            tools:ignore="RtlHardcoded,RtlSymmetry" />
+
+    </androidx.cardview.widget.CardView>
+
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/pullRequestRecyclerView"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/cardView" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
