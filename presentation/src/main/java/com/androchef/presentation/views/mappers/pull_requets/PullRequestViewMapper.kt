@@ -5,8 +5,9 @@ import com.androchef.presentation.mapper.Mapper
 import com.androchef.presentation.views.mappers.user.UserViewMapper
 import com.androchef.presentation.views.utils.DateTimeUtils
 import com.androchef.presentation.views.views.PullRequestView
+import javax.inject.Inject
 
-class PullRequestViewMapper(private val userViewMapper: UserViewMapper) :
+class PullRequestViewMapper @Inject constructor(private val userViewMapper: UserViewMapper) :
     Mapper<PullRequestView, PullRequest> {
 
     override fun mapToView(type: PullRequest): PullRequestView {

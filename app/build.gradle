@@ -4,6 +4,7 @@ import dependencies.Version
 apply plugin: Dependencies.Plugins.ANDROID_APPLICATION
 apply plugin: Dependencies.Plugins.KOTLIN_ANDROID
 apply plugin: Dependencies.Plugins.KOTLIN_ANDROID_EXTENSIONS
+apply plugin: Dependencies.Plugins.KOTLIN_KAPT
 
 android {
     compileSdkVersion Version.compileSdk
@@ -21,8 +22,15 @@ android {
 
     buildTypes {
         release {
+            debuggable false
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+            buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
+        }
+
+        debug {
+            debuggable true
+            buildConfigField "String", "BASE_URL", '"https://api.github.com/"'
         }
     }
 }
@@ -30,6 +38,12 @@ android {
 dependencies {
     implementation fileTree(dir: "libs", include: ["*.jar"])
     implementation Dependencies.Kotlin.kotlin_stdlib_jdk7
+
+    //Modules
+    implementation project(Dependencies.Module.domain)
+    implementation project(Dependencies.Module.data)
+    implementation project(Dependencies.Module.remote)
+    implementation project(Dependencies.Module.presentaion)
 
     //Android X
     implementation Dependencies.AndroidX.appcompat
@@ -41,5 +55,15 @@ dependencies {
     //Testing
     testImplementation Dependencies.Test.test_junit
     androidTestImplementation Dependencies.Test.android_test_espresso_core
+
+    //RxJava
+    implementation Dependencies.RxJava.rxAndroid
+
+    //Dagger2
+    implementation Dependencies.Dagger.dagger2
+    implementation Dependencies.Dagger.daggerAndroid
+    implementation Dependencies.Dagger.daggerAndroidSupport
+    kapt Dependencies.Dagger.processor
+    kapt Dependencies.Dagger.compiler
 
 }

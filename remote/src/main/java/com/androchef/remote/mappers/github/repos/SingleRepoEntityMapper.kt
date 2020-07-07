@@ -3,8 +3,9 @@ package com.androchef.remote.mappers.github.repos
 import com.androchef.data.models.SingleRepoEntity
 import com.androchef.remote.mappers.EntityMapper
 import com.androchef.remote.models.github.repo.GithubSingleRepo
+import javax.inject.Inject
 
-class SingleRepoEntityMapper : EntityMapper<GithubSingleRepo,SingleRepoEntity> {
+class SingleRepoEntityMapper @Inject constructor() : EntityMapper<GithubSingleRepo,SingleRepoEntity> {
 
     override fun mapFromModel(model: GithubSingleRepo): SingleRepoEntity {
         return SingleRepoEntity(

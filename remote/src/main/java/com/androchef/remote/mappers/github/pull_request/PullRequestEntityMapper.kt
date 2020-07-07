@@ -4,8 +4,9 @@ import com.androchef.data.models.PullRequestEntity
 import com.androchef.remote.mappers.EntityMapper
 import com.androchef.remote.mappers.github.user.UserEntityMapper
 import com.androchef.remote.models.github.pr.GithubPullRequest
+import javax.inject.Inject
 
-class PullRequestEntityMapper(private val userEntityMapper: UserEntityMapper) :
+class PullRequestEntityMapper @Inject constructor(private val userEntityMapper: UserEntityMapper) :
     EntityMapper<GithubPullRequest, PullRequestEntity> {
 
     override fun mapFromModel(model: GithubPullRequest): PullRequestEntity {

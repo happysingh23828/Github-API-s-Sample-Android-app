@@ -6,8 +6,9 @@ import com.androchef.domain.executor.ThreadExecutor
 import com.androchef.domain.interactor.core.SingleUseCase
 import com.androchef.domain.models.repo.GitSingleRepo
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GetUserRepositoryListUseCase constructor(
+class GetUserRepositoryListUseCase @Inject constructor(
     private val gitRepository: GitRepository,
     threadExecutor: ThreadExecutor,
     postExecutionThread: PostExecutionThread

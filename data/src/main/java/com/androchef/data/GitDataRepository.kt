@@ -7,8 +7,9 @@ import com.androchef.domain.GitRepository
 import com.androchef.domain.models.pullrequest.PullRequest
 import com.androchef.domain.models.repo.GitSingleRepo
 import io.reactivex.Single
+import javax.inject.Inject
 
-class GitDataRepository constructor(
+class GitDataRepository @Inject constructor(
     private val pullRequestMapper: PullRequestMapper,
     private val singleRepoMapper: SingleRepoMapper,
     private val gitDataStoreFactory: GitDataStoreFactory
@@ -32,7 +33,7 @@ class GitDataRepository constructor(
                 listOfPullRequest.map { pullRequestMapper.mapFromEntity(it) }
             }
     }
-    
+
     private fun getPullRequestState(state: PullRequest.State): String {
         return when (state) {
             PullRequest.State.OPEN -> "open"
