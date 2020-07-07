@@ -41,10 +41,8 @@ object Dependencies {
             "androidx.lifecycle:lifecycle-extensions:${Version.lifecycleVersion}"
     }
 
-    object Glide {
-        const val glide = "com.github.bumptech.glide:glide:${Version.glide}"
-        const val annotationProcessor = "androidx.annotation:annotation:1.0.0"
-        const val annotationCompiler = "com.github.bumptech.glide:compiler:${Version.glide}"
+    object Picasso {
+        const val picasso = "com.squareup.picasso:picasso:${Version.picasso}"
     }
 
     object Gson {
@@ -118,4 +116,6 @@ object Dependencies {
     const val javaxjsr250 = "javax.annotation:jsr250-api:${Version.javaxAnnotation}"
     const val parceler = "org.parceler:parceler-api:${Version.parcelerVersion}"
     const val parcelerProcessor = "org.parceler:parceler-api:${Version.parcelerVersion}"
+    const val jodaTime = "joda-time:joda-time:${Version.jodaTime}"
+
 }

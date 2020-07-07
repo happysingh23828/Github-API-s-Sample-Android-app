@@ -13,10 +13,22 @@ class PullRequestViewMapper @Inject constructor(private val userViewMapper: User
     override fun mapToView(type: PullRequest): PullRequestView {
         return PullRequestView(
             id = type.id,
-            closedAt = DateTimeUtils.getDateTimeInDayMonthFormat(type.closedAt),
-            createdAt = DateTimeUtils.getDateTimeInDayMonthFormat(type.createdAt),
+            prDesc = type.desc,
+            closedAt = getValidDate(type.closedAt),
+            createdAt = getValidDate(type.createdAt),
             user = userViewMapper.mapToView(type.user),
             prTitle = type.title
         )
     }
+
+    private fun getValidDate(date : String) : String {
+        return if(date.isValid()){
+            DateTimeUtils.getDayWithMonthName(date)
+        } else
+            "No date available."
+    }
+}
+
+fun String?.isValid(): Boolean {
+    return this != null && this.isNotEmpty() && this.isNotBlank()
 }

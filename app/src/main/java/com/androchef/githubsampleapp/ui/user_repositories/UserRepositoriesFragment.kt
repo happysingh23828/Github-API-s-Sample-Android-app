@@ -9,14 +9,16 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.androchef.githubsampleapp.R
+import com.androchef.githubsampleapp.extensions.addFragmentBackStack
 import com.androchef.githubsampleapp.extensions.toast
+import com.androchef.githubsampleapp.ui.pull_requests.PullRequestsFragment
 import com.androchef.githubsampleapp.ui.user_repositories.adaptor.UserRepositoriesAdaptor
 import com.androchef.presentation.viewmodel.GitDataState
 import com.androchef.presentation.viewmodel.GitDataViewModel
 import com.androchef.presentation.views.views.SingleRepoView
 import kotlinx.android.synthetic.main.fragment_user_repositories.view.*
 
-class UserRepositoriesFragment : Fragment() {
+class UserRepositoriesFragment : Fragment(), UserRepositoriesAdaptor.OnItemCLickListener {
 
     private lateinit var mView: View
 
@@ -71,10 +73,18 @@ class UserRepositoriesFragment : Fragment() {
     private fun showRepoList(lisOfRepos: List<SingleRepoView>) {
         if (lisOfRepos.isNotEmpty()) {
             mView.userRepoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
-            mView.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(lisOfRepos)
+            mView.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(lisOfRepos, this)
         } else {
-            popUpFragment(getString(R.string.inof_no_repositories))
+            popUpFragment(getString(R.string.info_no_repositories))
         }
+    }
+
+    override fun onRepoClick(repoView: SingleRepoView) {
+        addFragmentBackStack(
+            R.id.mainFragmentContainer,
+            PullRequestsFragment.newInstance(userName, repoView.repoName),
+            PullRequestsFragment.TAG
+        )
     }
 
     private fun popUpFragment(message: String) {
@@ -83,6 +93,7 @@ class UserRepositoriesFragment : Fragment() {
     }
 
     companion object {
+        const val TAG = "UserRepositoriesFragment"
         private const val ARGS_USERNAME = "args_username"
         fun newInstance(userName: String): UserRepositoriesFragment {
             val bundle = Bundle()

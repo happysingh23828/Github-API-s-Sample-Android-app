@@ -41,7 +41,7 @@ class LandingFragment : Fragment() {
     private fun goToNextFragment(userName: String) {
         addFragmentBackStack(
             R.id.mainFragmentContainer, UserRepositoriesFragment.newInstance(userName),
-            TAG
+            UserRepositoriesFragment.TAG
         )
     }
 

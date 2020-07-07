@@ -73,4 +73,7 @@ dependencies {
     kapt Dependencies.Dagger.processor
     kapt Dependencies.Dagger.compiler
 
+    //UI
+    implementation Dependencies.Picasso.picasso
+
 }

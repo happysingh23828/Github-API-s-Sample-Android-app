@@ -8,9 +8,15 @@ import com.androchef.githubsampleapp.R
 import com.androchef.presentation.views.views.SingleRepoView
 import kotlinx.android.synthetic.main.layout_single_user_repository_item.view.*
 
-class UserRepositoriesAdaptor(private val listOfRepos: List<SingleRepoView>) :
+class UserRepositoriesAdaptor(
+    private val listOfRepos: List<SingleRepoView>,
+    val onItemCLickListener: OnItemCLickListener
+) :
     RecyclerView.Adapter<UserRepositoriesAdaptor.UserRepositoriesViewHolder>() {
 
+    interface OnItemCLickListener {
+        fun onRepoClick(repoView: SingleRepoView)
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): UserRepositoriesViewHolder {
         return UserRepositoriesViewHolder(
@@ -35,6 +41,13 @@ class UserRepositoriesAdaptor(private val listOfRepos: List<SingleRepoView>) :
             mView.tvRepoName.text = repoView.repoName
             mView.tvRepoDesc.text = repoView.repoDescription
             mView.tvRepoForkCount.text = repoView.forksCount.toString()
+            onClicks(repoView)
+        }
+
+        private fun onClicks(repoView: SingleRepoView) {
+            mView.setOnClickListener {
+                onItemCLickListener.onRepoClick(repoView)
+            }
         }
     }
 }

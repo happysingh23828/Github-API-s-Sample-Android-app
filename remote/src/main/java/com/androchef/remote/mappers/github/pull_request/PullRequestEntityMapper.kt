@@ -13,8 +13,9 @@ class PullRequestEntityMapper @Inject constructor(private val userEntityMapper: 
     override fun mapFromModel(model: GithubPullRequest): PullRequestEntity {
         return PullRequestEntity(
             id = model.id?:-1,
+            desc = model.body?:"No description ",
             user = userEntityMapper.mapFromModel(model.user ?: GithubUser()),
-            title = model.title ?:"",
+            title = model.title ?:"No title",
             createdAt = model.createdAt ?:"",
             closedAt = model.closedAt ?:""
         )
