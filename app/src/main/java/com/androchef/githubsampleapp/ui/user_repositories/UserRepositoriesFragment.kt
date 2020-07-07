@@ -7,11 +7,14 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
+import androidx.recyclerview.widget.LinearLayoutManager
 import com.androchef.githubsampleapp.R
 import com.androchef.githubsampleapp.extensions.toast
+import com.androchef.githubsampleapp.ui.user_repositories.adaptor.UserRepositoriesAdaptor
 import com.androchef.presentation.viewmodel.GitDataState
 import com.androchef.presentation.viewmodel.GitDataViewModel
 import com.androchef.presentation.views.views.SingleRepoView
+import kotlinx.android.synthetic.main.fragment_user_repositories.view.*
 
 class UserRepositoriesFragment : Fragment() {
 
@@ -67,7 +70,8 @@ class UserRepositoriesFragment : Fragment() {
     }
 
     private fun showRepoList(lisOfRepos: List<SingleRepoView>) {
-        toast(lisOfRepos.toString())
+        mView.userRepoRecyclerView.layoutManager = LinearLayoutManager(requireContext())
+        mView.userRepoRecyclerView.adapter = UserRepositoriesAdaptor(lisOfRepos)
     }
 
     companion object {
